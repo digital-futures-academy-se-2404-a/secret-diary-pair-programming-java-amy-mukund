@@ -30,28 +30,29 @@ public class DiaryTest {
         assertNotNull(actualEntries);
     }
 
-
-
     @Test
     void testThatWriteDiaryDoesNotAcceptNull() {
         // Arrange
-
         Diary testDiary = new Diary();
         testDiary.writeDiary(null);
 
         // Act
         int actualEntries = testDiary.getEntries().size();
 
-
         // Assert
         assertEquals(0, actualEntries);
     }
 
+    @Test
+    void testThatWriteDiaryDoesNotAcceptEmptyStrings() {
+        // Arrange
+        Diary testDiary = new Diary();
+        testDiary.writeDiary(" ");
 
+        // Act
+        int actualEntries = testDiary.getEntries().size();
 
+        // Assert
+        assertEquals(0, actualEntries);
+    }
 }
-
-
-
-
-

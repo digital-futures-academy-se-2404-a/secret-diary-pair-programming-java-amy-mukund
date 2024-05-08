@@ -9,9 +9,9 @@ public class Diary {
     }
 
     public void writeDiary(String entry) {
-        if (entry==null){
+        if (entry==null || entry.trim().isEmpty()) {
             return;
-                        }
+        }
 
         this.entries.add(entry);
     }
@@ -23,9 +23,7 @@ public class Diary {
     public String readDiary() {
 
         for (String i: entries){
-
             intiStrng.append(i +  '\n');
-            //intiStrng += i;
         }
 
         return this.intiStrng.toString();
