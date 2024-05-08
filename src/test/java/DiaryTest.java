@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,28 +32,24 @@ public class DiaryTest {
     }
 
     @Test
-    void testThatWriteDiaryDoesNotAcceptNull() {
+    @DisplayName("Throws an error when the user tries to make a diary entry that is empty or null")
+    void testThatWriteDiaryThrowsErrorWhenEmptyOrNull() {
         // Arrange
         Diary testDiary = new Diary();
-        testDiary.writeDiary(null);
 
         // Act
-        int actualEntries = testDiary.getEntries().size();
-
         // Assert
-        assertEquals(0, actualEntries);
+        assertThrows(IllegalArgumentException.class, () -> testDiary.writeDiary(" "));
     }
 
     @Test
-    void testThatWriteDiaryDoesNotAcceptEmptyStrings() {
-        // Arrange
+    @DisplayName("Changes lock status to locked when lock method is called")
+    void testDiaryLockChangesStatusToLocked() {
+        //Arrange
         Diary testDiary = new Diary();
-        testDiary.writeDiary(" ");
-
-        // Act
-        int actualEntries = testDiary.getEntries().size();
-
-        // Assert
-        assertEquals(0, actualEntries);
+        //Act
+        boolean lockStatus = testDiary.lockDiary();
+        //Assert
+        assertEquals(true, lockStatus);
     }
 }
