@@ -9,6 +9,10 @@ public class Diary {
     }
 
     public void writeDiary(String entry) {
+        if (entry==null){
+            return;
+                        }
+
         this.entries.add(entry);
     }
 

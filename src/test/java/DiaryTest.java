@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DiaryTest {
     @Test
@@ -30,4 +29,29 @@ public class DiaryTest {
         // Assert
         assertNotNull(actualEntries);
     }
+
+
+
+    @Test
+    void testThatWriteDiaryDoesNotAcceptNull() {
+        // Arrange
+
+        Diary testDiary = new Diary();
+        testDiary.writeDiary(null);
+
+        // Act
+        int actualEntries = testDiary.getEntries().size();
+
+
+        // Assert
+        assertEquals(0, actualEntries);
+    }
+
+
+
 }
+
+
+
+
+
